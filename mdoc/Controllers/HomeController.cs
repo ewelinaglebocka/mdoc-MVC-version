@@ -13,16 +13,48 @@ namespace mdoc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Instruction()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ExecutiveDocumentation()
         {
             return View();
         }
 
+        public IActionResult EditDocument()
+        {
+            return View();
+        }
+        public IActionResult EditUsers()
+        {
+            return View();
+        }
+        public IActionResult Tests()
+        {
+            return View();
+        }
+        public IActionResult TechnologicalChanges()
+        {
+            return View();
+        }
+        public IActionResult Valuations()
+        {
+            return View();
+        }
+        public IActionResult IssuanceOfDocumentation()
+        {
+            return View();
+        }
+        public IActionResult Notifications()
+        {
+            return View();
+        }
+        public IActionResult Reports()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
