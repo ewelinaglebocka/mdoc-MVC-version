@@ -22,20 +22,14 @@ namespace mdoc.Controllers
         [HttpPost]
         public IActionResult Instruction()
         {
-            string fileName = Request.Form["fileToView"];
-            string outputDirectory = ("Output/");
-            string outputFilePath = Path.Combine(outputDirectory, "output.pdf");
-            using (Viewer viewer = new Viewer("W:/mdoc/" + fileName))
-            {
-                PdfViewOptions options = new PdfViewOptions(outputFilePath);
-                viewer.View(options);
-            }
-            var fileStream = new FileStream("Output/" + "output.pdf",
+            string fileName = ("W:/mdoc/mDoc_istrukcja.pdf");
+            var fileStream = new FileStream(fileName,
                 FileMode.Open,
                 FileAccess.Read
                 );
             var fsResult = new FileStreamResult(fileStream, "application/pdf");
             return fsResult;
+
         }
 
         public IActionResult ExecutiveDocumentation()
