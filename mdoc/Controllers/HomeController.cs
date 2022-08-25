@@ -1,4 +1,6 @@
-﻿using mdoc.Models;
+﻿using GroupDocs.Viewer;
+using GroupDocs.Viewer.Options;
+using mdoc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,9 +15,27 @@ namespace mdoc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Instruction()
+        public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Instruction()
+        {
+            string fileName = Request.Form["fileToView"];
+            string outputDirectory = ("Output/");
+            string outputFilePath = Path.Combine(outputDirectory, "output.pdf");
+            using (Viewer viewer = new Viewer("W:/mdoc/" + fileName))
+            {
+                PdfViewOptions options = new PdfViewOptions(outputFilePath);
+                viewer.View(options);
+            }
+            var fileStream = new FileStream("Output/" + "output.pdf",
+                FileMode.Open,
+                FileAccess.Read
+                );
+            var fsResult = new FileStreamResult(fileStream, "application/pdf");
+            return fsResult;
         }
 
         public IActionResult ExecutiveDocumentation()
