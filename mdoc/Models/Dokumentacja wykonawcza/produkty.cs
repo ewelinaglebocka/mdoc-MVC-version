@@ -1,6 +1,6 @@
 ﻿namespace mdoc.DataBase.Models
 {
-    public class Produkt
+    public class produkty
     {
         public int ID { get; set; }
         public string produkt { get; set; }

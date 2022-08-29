@@ -9,11 +9,10 @@ namespace mdoc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly mdocContext contex;
+        public HomeController(mdocContext contex)
         {
-            _logger = logger;
+            this.contex = contex;
         }
 
         public IActionResult Index()

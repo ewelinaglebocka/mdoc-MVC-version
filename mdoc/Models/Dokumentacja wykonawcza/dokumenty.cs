@@ -1,6 +1,6 @@
 ﻿namespace mdoc.DataBase.Models.Dokumentacja_wykonawcza
 {
-    public class Dokument
+    public class dokumenty
     {
         public int ID { get; set; }
         public string grupa_dokumentu { get; set; }
