@@ -4,6 +4,7 @@ using mdoc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
 namespace mdoc.Controllers
 {
     public class HomeController : Controller
