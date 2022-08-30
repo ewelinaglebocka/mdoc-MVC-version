@@ -1,8 +1,8 @@
 ﻿using mdoc.Models.Dokumentacja_wykonawcza;
 
-namespace mdoc.Repositories
+namespace mdoc.Services
 {
-    public interface IExecutiveDocumentationRepository
+    public interface IExecutiveDocumentationService
     {
         public List<Produkty> GetAll();
     }

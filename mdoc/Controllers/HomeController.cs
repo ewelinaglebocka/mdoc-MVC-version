@@ -1,6 +1,7 @@
 ﻿using GroupDocs.Viewer;
 using GroupDocs.Viewer.Options;
 using mdoc.Models;
+using mdoc.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -9,10 +10,10 @@ namespace mdoc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly mdocContext contex;
-        public HomeController(mdocContext contex)
+        private readonly IExecutiveDocumentationService _executiveDocumentationService;
+        public HomeController(IExecutiveDocumentationService executiveDocumentationService)
         {
-            this.contex = contex;
+            _executiveDocumentationService = executiveDocumentationService;
         }
 
         public IActionResult Index()
@@ -34,7 +35,8 @@ namespace mdoc.Controllers
 
         public IActionResult ExecutiveDocumentation()
         {
-            return View();
+            var model = _executiveDocumentationService.GetAll();
+            return View(model);
         }
 
         public IActionResult EditDocument()

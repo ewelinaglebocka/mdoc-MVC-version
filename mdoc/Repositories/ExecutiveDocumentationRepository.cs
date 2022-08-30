@@ -1,4 +1,5 @@
-﻿using mdoc.DataBase.Models.Dokumentacja_wykonawcza;
+﻿using mdoc.Models.Dokumentacja_wykonawcza;
+using Microsoft.EntityFrameworkCore;
 
 namespace mdoc.Repositories
 {
@@ -9,11 +10,10 @@ namespace mdoc.Repositories
         {
             _context = context;
         }
-        public List<dokumenty> GetAll()
+        public List<Produkty> GetAll()
         {
-            var documents = _context.documents;
-
-            return documents.ToList();
+            var produkty = _context.produkty.ToList();
+            return produkty;
         }
     }
 }

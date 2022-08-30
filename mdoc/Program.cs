@@ -1,17 +1,23 @@
-using mdoc.DataBase.Models;
 using Microsoft.EntityFrameworkCore;
 using FirebirdSql.Data.FirebirdClient;
 using Dapper;
 using System.Diagnostics;
 using mdoc;
+using mdoc.Services;
+using mdoc.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<mdocContext>(
-    o => o.UseFirebird(builder.Configuration.GetConnectionString("mdocDb")));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection"); ;
+
+builder.Services.AddDbContext<mdocContext>(options =>
+    options.UseFirebird(connectionString)); ;
+
+builder.Services.AddScoped<IExecutiveDocumentationService, ExecutiveDocumentationService>();
+builder.Services.AddScoped<IExecutiveDocumentationRepository, ExecutiveDocumentationRepository>();
 
 var app = builder.Build();
 
