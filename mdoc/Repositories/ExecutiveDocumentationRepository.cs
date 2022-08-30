@@ -12,7 +12,7 @@ namespace mdoc.Repositories
         }
         public List<Produkty> GetAll()
         {
-            var produkty = _context.produkty.ToList();
+            var produkty = _context.produkty.Where(p=>p.aktywny=="tak").OrderBy(x=>x.produkt).ToList();
             return produkty;
         }
     }
