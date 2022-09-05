@@ -4,68 +4,15 @@
     ViewData["Title"] = "ExecutiveDocumentation";
 }
 
-<h1>ExecutiveDocumentation</h1>
+<h1>Produkt</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.produkt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nazwa_ikea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numer_ikea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ikea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.aktywny)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.grupa_produktowa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.symbol_sente)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.produkt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nazwa_ikea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numer_ikea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ikea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.aktywny)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.grupa_produktowa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.symbol_sente)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="item">
+            @Html.DisplayFor(modelItem => item.produkt)
+        </div>
+    }
+</div>
+

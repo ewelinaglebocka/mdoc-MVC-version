@@ -15,7 +15,7 @@
         public string osoba_wydająca { get; set; }
         public string osoba_dodajaca { get; set; }
         public string nazwa_pliku_local { get; set; }
-        public DateTime data_wygaszenia { get; set; }
+        public string data_wygaszenia { get; set; }
         public string uwagi { get; set; }
         public string nr_dokumentu { get; set; }
         public string wersja { get; set; }

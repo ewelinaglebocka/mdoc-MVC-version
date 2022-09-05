@@ -15,5 +15,10 @@ namespace mdoc.Repositories
             var produkty = _context.produkty.Where(p=>p.aktywny=="tak").OrderBy(x=>x.produkt).ToList();
             return produkty;
         }
+
+        public Dokumenty GetDocuments(string doc)
+        {
+            return _context.dokumenty.Include(d => d.grupa_dokumentu).FirstOrDefault(x => x.grupa_dokumentu == doc);
+        }
     }
 }

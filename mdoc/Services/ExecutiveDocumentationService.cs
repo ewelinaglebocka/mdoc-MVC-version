@@ -15,5 +15,10 @@ namespace mdoc.Services
         {
             return _executiveDocumentationRepository.GetAll();
         }
+
+        public Dokumenty GetDocuments(string doc)
+        {
+            return _executiveDocumentationRepository.GetDocuments(doc);
+        }
     }
 }
