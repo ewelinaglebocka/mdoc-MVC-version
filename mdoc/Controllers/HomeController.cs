@@ -1,9 +1,13 @@
 ﻿using GroupDocs.Viewer;
 using GroupDocs.Viewer.Options;
 using mdoc.Models;
+using mdoc.Models.Dokumentacja_wykonawcza;
 using mdoc.Services;
+using mdoc.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
+using static System.Reflection.Metadata.BlobBuilder;
 
 
 namespace mdoc.Controllers
@@ -32,11 +36,41 @@ namespace mdoc.Controllers
             return fsResult;
 
         }
-
-        public IActionResult ExecutiveDocumentation()
+        public IActionResult ExecutiveDocumentation(Produkty p, Dokumenty d)
         {
-            var model = _executiveDocumentationService.GetAll();
-            return View(model);
+            var document = _executiveDocumentationService.GetAllDocument();
+            var product = _executiveDocumentationService.GetAllProduct();
+
+            if (true)
+            {
+                product = _executiveDocumentationService.GetAllProduct().OrderBy(p => p.produkt).ToList();
+            }
+            
+            List<Dokumenty> result = new List<Dokumenty>(); 
+
+            foreach (var prod in product)
+            {
+                string val = prod.produkt.ToString();
+
+                foreach (var dok in document)
+                {
+                    string val2 = dok.grupa_dokumentu.ToString();
+                    if (val == val2)
+                    {
+                        result.Add(dok);
+                    }
+                }
+
+            }
+            document = result;
+
+            var ptViewModel = new ProductTypeViewModel
+            {
+                Produkty = product,
+                Dokumenty = document
+            };
+
+            return View(ptViewModel);
         }
 
         public IActionResult EditDocument()
@@ -76,5 +110,7 @@ namespace mdoc.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

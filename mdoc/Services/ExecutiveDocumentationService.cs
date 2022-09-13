@@ -11,14 +11,14 @@ namespace mdoc.Services
         {
             _executiveDocumentationRepository = executiveDocumentationRepository;
         }
-        public List<Produkty> GetAll()
+        public List<Dokumenty> GetAllDocument()
         {
-            return _executiveDocumentationRepository.GetAll();
+            return _executiveDocumentationRepository.GetAllDocument();
+        }
+        public List<Produkty> GetAllProduct()
+        {
+            return _executiveDocumentationRepository.GetAllProduct();
         }
 
-        public Dokumenty GetDocuments(string doc)
-        {
-            return _executiveDocumentationRepository.GetDocuments(doc);
-        }
     }
 }

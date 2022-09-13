@@ -1,5 +1,6 @@
 ﻿using mdoc.Models.Dokumentacja_wykonawcza;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace mdoc.Repositories
 {
@@ -10,15 +11,20 @@ namespace mdoc.Repositories
         {
             _context = context;
         }
-        public List<Produkty> GetAll()
+        public List<Dokumenty> GetAllDocument()
         {
-            var produkty = _context.produkty.Where(p=>p.aktywny=="tak").OrderBy(x=>x.produkt).ToList();
-            return produkty;
+            var documents = _context.dokumenty
+                .Where(p=>p.aktywny=="tak" && p.status_dokumentu == "wydany" && p.grupa_dokumentu != "null" && p.grupa_dokumentu != "")
+                .ToList();
+
+            return documents;
         }
 
-        public Dokumenty GetDocuments(string doc)
+        public List<Produkty>GetAllProduct()
         {
-            return _context.dokumenty.Include(d => d.grupa_dokumentu).FirstOrDefault(x => x.grupa_dokumentu == doc);
+            var products = _context.produkty.OrderBy(x=>x.produkt).ToList();
+            return products;
         }
+
     }
 }

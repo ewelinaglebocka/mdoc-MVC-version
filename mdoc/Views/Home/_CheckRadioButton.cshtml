@@ -1,0 +1,9 @@
+﻿@model mdoc.ViewModels.ProductTypeViewModel
+
+@foreach (var dok in Model.Dokumenty)
+{
+    <div class="form-check">
+        <input type="radio" asp-for="Dokumenty" value="@dok.nazwa_dokumentu" />
+        @dok.nazwa_dokumentu
+    </div>
+}

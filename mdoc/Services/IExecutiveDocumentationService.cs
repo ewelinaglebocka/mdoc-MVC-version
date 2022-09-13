@@ -4,7 +4,7 @@ namespace mdoc.Services
 {
     public interface IExecutiveDocumentationService
     {
-        public List<Produkty> GetAll();
-        public Dokumenty GetDocuments(string doc);
+        public List<Dokumenty> GetAllDocument();
+        public List<Produkty> GetAllProduct();
     }
 }
